@@ -1,5 +1,9 @@
-//Global variables
-let displayed;
+//Track if the display currently holds input
+let currentInput;
+
+//Tracks when an operator has been pressed
+let currentOperator;
+
 let firstNum;
 let secondNum;
 let operator;
@@ -52,9 +56,15 @@ const buttonFive = document.querySelector("#button-5");
 buttonFive.innerHTML = "7";
 
 buttonFive.addEventListener("click", () => {
-    firstNum = 7;
-    if (displayIsEmpty() === true)
-    {
+    if (displayIsEmpty() && operatorIsEmpty()) {
+        firstNum = 7;
+        currentInput = true;
+        display.innerHTML = `${firstNum}`;
+    }
+    else if (!displayIsEmpty() && operatorIsEmpty()) {
+        let stringNum = firstNum.toString();
+        let newStringNum = stringNum + "7";
+        firstNum = parseInt(newStringNum);
         display.innerHTML = `${firstNum}`;
     }
 });
@@ -63,10 +73,19 @@ buttonFive.addEventListener("click", () => {
 const buttonSix = document.querySelector("#button-6");
 buttonSix.innerHTML = "8";
 
-// buttonFive.addEventListener("click", () => {
-//     firstNum = 8;
-//     display.innerHTML = `${firstNum}`;
-// });
+buttonSix.addEventListener("click", () => {
+    if (displayIsEmpty() && operatorIsEmpty()) {
+        firstNum = 8;
+        currentInput = true;
+        display.innerHTML = `${firstNum}`;
+    }
+    else if (!displayIsEmpty() && operatorIsEmpty()) {
+        let stringNum = firstNum.toString();
+        let newStringNum = stringNum + "8";
+        firstNum = parseInt(newStringNum);
+        display.innerHTML = `${firstNum}`;
+    }
+});
 
 //ButtonSeven (9)
 const buttonSeven = document.querySelector("#button-7");
@@ -137,11 +156,12 @@ function divide(m, n) {
     return m / n;
 }
 
-function displayIsEmpty () {
-    if (isNaN(displayed)) {
-        return true;
-    }
+function displayIsEmpty() {
+    return isNaN(currentInput);
 }
 
+function operatorIsEmpty() {
+    return isNaN(currentOperator);
+}
 
 
