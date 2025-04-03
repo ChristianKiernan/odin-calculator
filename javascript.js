@@ -586,6 +586,9 @@ function multiply(m, n) {
 }
 
 function divide(m, n) {
+    if (n === 0) {
+        return "Let's not do that";
+    }
     return Number((m / n).toFixed(10));
 }
 
