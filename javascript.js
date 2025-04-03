@@ -39,15 +39,46 @@ const buttonOne = document.querySelector("#button-1");
 buttonOne.innerHTML = "AC";
 buttonOne.classList.add("calc-button-orange");
 
+buttonOne.addEventListener("click", () => {
+    display.innerHTML = "0";
+    currentInput = false;
+    expressionComplete = false;
+    firstNum = null;
+    secondNum = null;
+    operator = null;
+});
+
 //ButtonTwo (+ / -)
 const buttonTwo = document.querySelector("#button-2");
 buttonTwo.innerHTML = "+ / -";
 buttonTwo.classList.add("calc-button-orange");
 
+buttonTwo.addEventListener("click", () => {
+    if (expressionComplete === false) {
+        firstNum = (firstNum *-1);
+        display.innerHTML = firstNum;
+    }
+    else {
+        secondNum = (secondNum *-1);
+        display.innerHTML = secondNum;
+    }
+});
+
 //ButtonThree (.)
 const buttonThree = document.querySelector("#button-3");
-buttonThree.innerHTML = ".";
+buttonThree.innerHTML = "%";
 buttonThree.classList.add("calc-button-orange");
+
+buttonThree.addEventListener("click", () => {
+    if (expressionComplete === false) {
+        firstNum = (firstNum * (1/100));
+        display.innerHTML = firstNum;
+    }
+    else {
+        secondNum = (secondNum * (1/100));
+        display.innerHTML = secondNum;
+    }
+});
 
 //ButtonFour (/)
 const buttonFour = document.querySelector("#button-4");
@@ -508,8 +539,6 @@ const buttonEighteen= document.querySelector("#button-18");
 buttonEighteen.innerHTML = "=";
 
 buttonEighteen.addEventListener("click", () => {
-
-    //Calls correct function based on operand, and resets currentInput and expressionComplete so as to terminate the current expression
     if (operator === '+') {
         display.innerHTML = `${add(firstNum, secondNum)}`;
         currentInput = false;
@@ -543,7 +572,6 @@ buttonEighteen.addEventListener("click", () => {
         operator = null;
     }
 });
-
 
 function add(m, n) {
     return m + n;
