@@ -1,1 +1,2 @@
 # odin-calculator
+The final project in The Odin Project (Foundations Course). The goal of the project was to create a webpage containing a depiction of a calculator, that functions as a standard calculator.
