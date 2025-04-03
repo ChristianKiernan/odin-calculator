@@ -1,5 +1,6 @@
 //Global variables
-let fistNum;
+let displayed;
+let firstNum;
 let secondNum;
 let operator;
 
@@ -52,12 +53,20 @@ buttonFive.innerHTML = "7";
 
 buttonFive.addEventListener("click", () => {
     firstNum = 7;
-    display.innerHTML = `${firstNum}`;
+    if (displayIsEmpty() === true)
+    {
+        display.innerHTML = `${firstNum}`;
+    }
 });
 
 //ButtonSix (8)
 const buttonSix = document.querySelector("#button-6");
 buttonSix.innerHTML = "8";
+
+// buttonFive.addEventListener("click", () => {
+//     firstNum = 8;
+//     display.innerHTML = `${firstNum}`;
+// });
 
 //ButtonSeven (9)
 const buttonSeven = document.querySelector("#button-7");
@@ -128,7 +137,11 @@ function divide(m, n) {
     return m / n;
 }
 
-
+function displayIsEmpty () {
+    if (isNaN(displayed)) {
+        return true;
+    }
+}
 
 
 
