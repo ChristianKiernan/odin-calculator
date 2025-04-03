@@ -4,7 +4,7 @@ let currentInput = false;
 //Tracks when an operator has been pressed
 let currentOperator;
 
-//Tracks when the first experssion entered is complete
+//Tracks when the first expression entered is complete
 let expressionComplete = false;
 
 let firstNum;
@@ -55,7 +55,35 @@ buttonFour.innerHTML = "/";
 buttonFour.classList.add("calc-button-blue");
 
 buttonFour.addEventListener("click", () => {
-    if (displayIsEmpty() === false) {
+    if (operator === '+') {
+        display.innerHTML = `${add(firstNum, secondNum)}`;
+        firstNum = add(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "/"
+    }
+    else if (operator === '-') {
+        display.innerHTML = `${subtract(firstNum, secondNum)}`;
+        firstNum = subtract(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "/";
+    }
+    else if (operator === '*') {
+        display.innerHTML = `${multiply(firstNum, secondNum)}`;
+        firstNum = multiply(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "/";
+    }
+    else if (operator === '/') {
+        display.innerHTML = `${divide(firstNum, secondNum)}`;
+        firstNum = divide(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "/";
+    }
+    else if (displayIsEmpty() === false) {
         currentInput = false;
         operator = "/";
         expressionComplete = true;
@@ -155,7 +183,35 @@ buttonEight.innerHTML = "*";
 buttonEight.classList.add("calc-button-blue");
 
 buttonEight.addEventListener("click", () => {
-    if (displayIsEmpty() === false) {
+    if (operator === '+') {
+        display.innerHTML = `${add(firstNum, secondNum)}`;
+        firstNum = add(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "*";
+    }
+    else if (operator === '-') {
+        display.innerHTML = `${subtract(firstNum, secondNum)}`;
+        firstNum = subtract(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "*";
+    }
+    else if (operator === '*') {
+        display.innerHTML = `${multiply(firstNum, secondNum)}`;
+        firstNum = multiply(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "*";
+    }
+    else if (operator === '/') {
+        display.innerHTML = `${divide(firstNum, secondNum)}`;
+        firstNum = divide(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "*";
+    }
+    else if (displayIsEmpty() === false) {
         currentInput = false;
         operator = "*";
         expressionComplete = true;
@@ -255,7 +311,35 @@ buttonTwelve.innerHTML = "-";
 buttonTwelve.classList.add("calc-button-blue");
 
 buttonTwelve.addEventListener("click", () => {
-    if (displayIsEmpty() === false) {
+    if (operator === '+') {
+        display.innerHTML = `${add(firstNum, secondNum)}`;
+        firstNum = add(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "-"
+    }
+    else if (operator === '-') {
+        display.innerHTML = `${subtract(firstNum, secondNum)}`;
+        firstNum = subtract(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "-";
+    }
+    else if (operator === '*') {
+        display.innerHTML = `${multiply(firstNum, secondNum)}`;
+        firstNum = multiply(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "-";
+    }
+    else if (operator === '/') {
+        display.innerHTML = `${divide(firstNum, secondNum)}`;
+        firstNum = divide(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "-";
+    }
+    else if (displayIsEmpty() === false) {
         currentInput = false;
         operator = "-";
         expressionComplete = true;
@@ -355,10 +439,35 @@ buttonSixteen.innerHTML = "+";
 buttonSixteen.classList.add("calc-button-blue");
 
 buttonSixteen.addEventListener("click", () => {
-
-    //Registers the click if there is a number in the display, and updates the operator
-    //Also signifies the first expression has been completed
-    if (displayIsEmpty() === false) {
+    if (operator === '+') {
+        display.innerHTML = `${add(firstNum, secondNum)}`;
+        firstNum = add(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "+"
+    }
+    else if (operator === '-') {
+        display.innerHTML = `${subtract(firstNum, secondNum)}`;
+        firstNum = subtract(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "+";
+    }
+    else if (operator === '*') {
+        display.innerHTML = `${multiply(firstNum, secondNum)}`;
+        firstNum = multiply(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "+";
+    }
+    else if (operator === '/') {
+        display.innerHTML = `${divide(firstNum, secondNum)}`;
+        firstNum = divide(firstNum, secondNum);
+        expressionComplete = true;
+        secondNum = 0;
+        operator = "+";
+    }
+    else if (displayIsEmpty() === false) {
         currentInput = false;
         operator = "+";
         expressionComplete = true;
@@ -407,6 +516,7 @@ buttonEighteen.addEventListener("click", () => {
         expressionComplete = false;
         firstNum = 0;
         secondNum = 0;
+        operator = null;
     }
     else if (operator === '-') {
         display.innerHTML = `${subtract(firstNum, secondNum)}`;
@@ -414,6 +524,7 @@ buttonEighteen.addEventListener("click", () => {
         expressionComplete = false;
         firstNum = 0;
         secondNum = 0;
+        operator = null;
     }
     else if (operator === '*') {
         display.innerHTML = `${multiply(firstNum, secondNum)}`;
@@ -421,6 +532,7 @@ buttonEighteen.addEventListener("click", () => {
         expressionComplete = false;
         firstNum = 0;
         secondNum = 0;
+        operator = null;
     }
     else if (operator === '/') {
         display.innerHTML = `${divide(firstNum, secondNum)}`;
@@ -428,6 +540,7 @@ buttonEighteen.addEventListener("click", () => {
         expressionComplete = false;
         firstNum = 0;
         secondNum = 0;
+        operator = null;
     }
 });
 
