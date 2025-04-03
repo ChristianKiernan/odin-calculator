@@ -1,8 +1,11 @@
 //Track if the display currently holds input
-let currentInput;
+let currentInput = false;
 
 //Tracks when an operator has been pressed
 let currentOperator;
+
+//Tracks when the first experssion entered is complete
+let expressionComplete = false;
 
 let firstNum;
 let secondNum;
@@ -56,16 +59,27 @@ const buttonFive = document.querySelector("#button-5");
 buttonFive.innerHTML = "7";
 
 buttonFive.addEventListener("click", () => {
-    if (displayIsEmpty() && operatorIsEmpty()) {
+    if (displayIsEmpty() && expressionComplete === false) {
         firstNum = 7;
         currentInput = true;
         display.innerHTML = `${firstNum}`;
     }
-    else if (!displayIsEmpty() && operatorIsEmpty()) {
-        let stringNum = firstNum.toString();
+    else if (displayIsEmpty() === false && expressionComplete === false) {
+        let stringNum = String(firstNum);
         let newStringNum = stringNum + "7";
         firstNum = parseInt(newStringNum);
         display.innerHTML = `${firstNum}`;
+    }
+    else if (displayIsEmpty() && expressionComplete === true) {
+        secondNum = 7;
+        currentInput = true;
+        display.innerHTML = `${secondNum}`;
+    }
+    else if (displayIsEmpty() === false && expressionComplete === true) {
+        let stringNum = secondNum.toString();
+        let newStringNum = stringNum + "7";
+        secondNum = parseInt(newStringNum);
+        display.innerHTML = `${secondNum}`
     }
 });
 
@@ -74,16 +88,27 @@ const buttonSix = document.querySelector("#button-6");
 buttonSix.innerHTML = "8";
 
 buttonSix.addEventListener("click", () => {
-    if (displayIsEmpty() && operatorIsEmpty()) {
+    if (displayIsEmpty() && expressionComplete === false) {
         firstNum = 8;
         currentInput = true;
         display.innerHTML = `${firstNum}`;
     }
-    else if (!displayIsEmpty() && operatorIsEmpty()) {
-        let stringNum = firstNum.toString();
+    else if (displayIsEmpty() === false && expressionComplete === false) {
+        let stringNum = String(firstNum);
         let newStringNum = stringNum + "8";
         firstNum = parseInt(newStringNum);
         display.innerHTML = `${firstNum}`;
+    }
+    else if (displayIsEmpty() && expressionComplete === true) {
+        secondNum = 8;
+        currentInput = true;
+        display.innerHTML = `${secondNum}`;
+    }
+    else if (displayIsEmpty() === false && expressionComplete === true) {
+        let stringNum = secondNum.toString();
+        let newStringNum = stringNum + "8";
+        secondNum = parseInt(newStringNum);
+        display.innerHTML = `${secondNum}`
     }
 });
 
@@ -130,6 +155,18 @@ const buttonSixteen = document.querySelector("#button-16");
 buttonSixteen.innerHTML = "+";
 buttonSixteen.classList.add("calc-button-blue");
 
+buttonSixteen.addEventListener("click", () => {
+
+    //Registers the click if there is a number in the display, and updates the operator
+    //Also signifies the first expression has been completed
+    if (displayIsEmpty() === false) {
+        currentInput = false;
+        operator = "+";
+        expressionComplete = true;
+    }
+});
+
+
 //ButtonSeventeen (0)
 const buttonSeventeen = document.querySelector("#button-17");
 buttonSeventeen.innerHTML = "0";
@@ -138,6 +175,14 @@ buttonSeventeen.innerHTML = "0";
 const buttonEighteen= document.querySelector("#button-18");
 buttonEighteen.innerHTML = "=";
 
+buttonEighteen.addEventListener("click", () => {
+    //Calls correct function based on operand, and resets currentInput and expressionComplete so as to terminate the current expression
+    if (operator === '+') {
+        display.innerHTML = `${add(firstNum, secondNum)}`;
+        currentInput = false;
+        expressionComplete = false;
+    }
+});
 
 
 function add(m, n) {
@@ -157,11 +202,12 @@ function divide(m, n) {
 }
 
 function displayIsEmpty() {
-    return isNaN(currentInput);
+    if (currentInput === false) {
+        return true;
+    }
+    return false;
 }
 
-function operatorIsEmpty() {
-    return isNaN(currentOperator);
-}
+
 
 
