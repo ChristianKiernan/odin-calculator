@@ -574,19 +574,19 @@ buttonEighteen.addEventListener("click", () => {
 });
 
 function add(m, n) {
-    return m + n;
+    return Number((m + n).toFixed(10));
 }
 
 function subtract(m, n) {
-    return m - n;
+    return Number((m - n).toFixed(10));
 }
 
 function multiply(m, n) {
-    return m * n;
+    return Number((m * n).toFixed(10));
 }
 
 function divide(m, n) {
-    return m / n;
+    return Number((m / n).toFixed(10));
 }
 
 function displayIsEmpty() {
